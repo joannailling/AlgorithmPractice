@@ -8,6 +8,8 @@ public class Chapter1 {
     private Scanner scan;
     
     public boolean onePointOne(String inString) {
+        // Implement an algorithm to determine if a string has all unique 
+        // characters. What if you can not use additional data structures?
         for (int i = 0; i < inString.length(); i ++) {
             for (int j = i+1; j < inString.length(); j ++) {
                 if ((inString.charAt(i)) == (inString.charAt(j))) {
