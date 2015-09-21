@@ -1,6 +1,8 @@
 
 package CrackCodingInt;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Chapter1 {
@@ -62,6 +64,43 @@ public class Chapter1 {
         return String.valueOf(input);
     }
     
+    public boolean onePointFour(String str1, String str2) {
+        // write a method to decide if two strings are anagrams or not.
+        if (str1.length() != str2.length()) { // anagrams can't be different lengths
+            return false;
+        } else { // input strings are same length
+            for (int i = 0; i < str1.length(); i++ ) {
+                if (!(str2.contains(String.valueOf(str1.charAt(i))))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+    
+    public String onePointFive(String inString) {
+        int size = inString.length();
+        for (int i = 0; i < inString.length(); i++ ) {
+            if ((int)inString.charAt(i) == 32) {
+                size += 2;     
+            }
+        }
+        char[] chars = new char[size]; // new char array large enough to hold extra chars
+        int k = 0; // index for char array
+        for (int j = 0; j < inString.length(); j++ ) { // index for string
+            if ((int)inString.charAt(j) == 32) { // char in string is space
+                chars[k] = '%';               
+                chars[k+1] = '2';   
+                chars[k+2] = '0';
+                k+=3;
+            } else {
+                chars[k] = inString.charAt(j);
+                k++;
+            }
+        }
+        return String.valueOf(chars);
+    }
+    
     public void test() {
         scan  = new Scanner(System.in);
         
@@ -88,6 +127,22 @@ public class Chapter1 {
                 for (int i = 0; i < repetitions; i++ ){
                     System.out.print("Enter a String to remove duplicates: ");
                     System.out.println(onePointThree(scan.nextLine().toCharArray()));
+                }
+                break;
+            case 4 : // 1.4 determines if two strings are anagrams or not
+                for (int i = 0; i < repetitions; i++ ) {
+                    System.out.println("Enter two strings to determine whether they are anagrams.");
+                    System.out.print("String 1: ");
+                    String str1 = scan.nextLine();
+                    System.out.print("String 2: ");
+                    String str2 = scan.nextLine();
+                    System.out.println(String.valueOf(onePointFour(str1, str2)) + "\n");
+                }
+                break;
+            case 5: // 1.5 replaces spaces in a string with '%20'
+                for (int i = 0; i < repetitions; i++ ) {
+                    System.out.print("Enter a String to replace spaces: ");
+                    System.out.println(onePointFive(scan.nextLine()));
                 }
                 break;
             default:
