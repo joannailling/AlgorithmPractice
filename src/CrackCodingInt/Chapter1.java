@@ -56,6 +56,7 @@ public class Chapter1 {
                     tail++;
                 }
             }
+            System.out.println("Tail " + String.valueOf(tail));
             while (tail < len) { //clear all chars in array with index >= tail
                 input[tail] = 0;
                 tail++;
