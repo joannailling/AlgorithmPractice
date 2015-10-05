@@ -19,13 +19,13 @@ public class AddingMachine {
         boolean keepLooping = true;
         int subtotal = 0;
         int grandtotal = 0;      
-        int number = -1;
+        Integer number = null;
         while (keepLooping == true) {
-            int prevNumber = number;
+            Integer prevNumber = number;
             number = scan.nextInt();
             subtotal = subtotal + number;
             grandtotal = grandtotal + number;
-            if (number == 0) {
+            if (number != null && number == 0) {
                 if (prevNumber == 0) {
                     keepLooping = false;
                 } else {
