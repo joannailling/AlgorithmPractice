@@ -2,8 +2,6 @@
 package CrackCodingInt;
 
 import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.LinkedList;
 import java.util.Random;
 
 public class Chapter2 {
@@ -62,13 +60,31 @@ public class Chapter2 {
         return head;
     }
     
-    public LinkedListNode twoPointTwo(LinkedList ll, int n) {
+    public LinkedListNode twoPointTwo(LinkedListNode head, int n) {
     // Implement an algorithm to find the nth to last element of a singly linked list
         
-        return new LinkedListNode(new Object());
+        if (head == null || n < 1) {
+            return null;
+        }
+        LinkedListNode node1 = head;
+        LinkedListNode node2 = head;
+        
+        for (int i = 0; i < (n-1); ++i) {
+            if (node2 == null) {
+                return null;
+            }
+            node2 = node2.next;
+        }
+        // at this point, node2 is n-1 nodes ahead of node1
+        // keep moving both forward until node2 reaches tail
+        while (node2.next != null) {
+            node1 = node1.next;
+            node2 = node2.next;
+        }
+        return node1;
     }
     
-    public void twoPointThree(LinkedList ll, LinkedListNode c) {
+    public void twoPointThree(LinkedListNode node, LinkedListNode c) {
     /** Implement an algorithm to delete a node in the middle of a single linked list, given 
     *   only access to that node
     *   EXAMPLE
@@ -76,19 +92,33 @@ public class Chapter2 {
     *   Result: nothing is returned, but the new linked list looks like a->b->d->e
     **/
         
+        
     }
     
     public static void main(String[] args) {
         Chapter2 c2 = new Chapter2();
-        LinkedListNode head = c2.makeList(15, 10);
+        LinkedListNode head;
+        
+        // Remove duplicates using HashMap
+        head = c2.makeList(15, 10);
         c2.printList(head);
         c2.twoPointOneA(head);
         c2.printList(head);
         System.out.println("");
+        
+        // Remove duplicates without extra buffer
         head = c2.makeList(15, 10);
         c2.printList(head);
         c2.twoPointOneB(head);
         c2.printList(head);
+        System.out.println("");
+        
+        // Return nth node from tail
+        head = c2.makeList(10, 10);
+        c2.printList(head);
+        LinkedListNode nth = c2.twoPointTwo(head, 3);
+        System.out.println(nth.data.toString());
+        
     }
 
 }
