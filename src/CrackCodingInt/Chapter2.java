@@ -84,15 +84,19 @@ public class Chapter2 {
         return node1;
     }
     
-    public void twoPointThree(LinkedListNode node, LinkedListNode c) {
+    public void twoPointThree(LinkedListNode c) {
     /** Implement an algorithm to delete a node in the middle of a single linked list, given 
     *   only access to that node
     *   EXAMPLE
     *   Input: the node ‘c’ from the linked list a->b->c->d->e
     *   Result: nothing is returned, but the new linked list looks like a->b->d->e
     **/
-        
-        
+        if (c.next != null) {
+            LinkedListNode next = c.next;
+            next.data = c.data;
+            c.next = next.next;
+        }
+        c = null;     
     }
     
     public static void main(String[] args) {
@@ -118,6 +122,11 @@ public class Chapter2 {
         c2.printList(head);
         LinkedListNode nth = c2.twoPointTwo(head, 3);
         System.out.println(nth.data.toString());
+        
+        head = c2.makeList(5,10);
+        c2.printList(head);
+        c2.twoPointThree(head.next.next.next);
+        c2.printList(head);
         
     }
 
