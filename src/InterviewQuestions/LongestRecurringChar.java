@@ -1,8 +1,8 @@
-package LongestRecurringChar;
+package InterviewQuestions;
 
 import java.util.Scanner;
 
-public class Solution1 {
+public class LongestRecurringChar {
     
     public ReturnPair longest(String s) {
         int max = 0;
@@ -29,7 +29,7 @@ public class Solution1 {
     }
     
     public static void main(String[] args) {
-        Solution1 s = new Solution1();
+        LongestRecurringChar s = new LongestRecurringChar();
         Scanner scan = new Scanner(System.in);
         System.out.print("Enter String to determine longest consecutively repeated character: ");
         ReturnPair rp = s.longest(scan.nextLine());

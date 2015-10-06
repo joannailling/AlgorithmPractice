@@ -1,5 +1,5 @@
 
-package LongestRecurringChar;
+package InterviewQuestions;
 
 public class ReturnPair {
     private char letter;
